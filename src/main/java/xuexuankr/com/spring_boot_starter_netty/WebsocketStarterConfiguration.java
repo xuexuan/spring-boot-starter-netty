@@ -5,11 +5,13 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ConditionalOnClass({WebsocketServer.class})
 @EnableConfigurationProperties(WebsocketStarterProperties.class)
+@ComponentScan
 public class WebsocketStarterConfiguration {
 
 	@Autowired
@@ -23,10 +25,10 @@ public class WebsocketStarterConfiguration {
 		return server;
 	}
 	
-	@Bean
-	@ConditionalOnMissingBean(AnnotationObjects.class)
-	public AnnotationObjects getAnnotationObjects() {
-		AnnotationObjects objects = new AnnotationObjects();
-		return objects;
-	}
+	//@Bean
+	//@ConditionalOnMissingBean(AnnotationObjects.class)
+	//public AnnotationObjects getAnnotationObjects() {
+	//	AnnotationObjects objects = new AnnotationObjects();
+	//	return objects;
+	//}
 }
